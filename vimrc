@@ -1,16 +1,16 @@
 call plug#begin()
 Plug 'dense-analysis/ale'
-Plug 'dyng/ctrlsf.vim'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'lervag/vimtex'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mileszs/ack.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
-Plug 'tpope/vim-fugitive'
 call plug#end()
 
 set nocompatible
@@ -51,9 +51,15 @@ nmap <S-tab> :tabprevious<cr>
 map j gj
 map k gk
 
+
 autocmd BufWritePre * %s/\s\+$//e
+autocmd FileType tex setl updatetime=1
+
+set background=light
 
 highlight clear SignColumn
 
-let g:airline_theme='base16_monokai'
+let g:airline_theme='bubblegum'
 let g:airline#extensions#ale#enabled = 1
+
+let g:vimtex_view_method = 'zathura'
